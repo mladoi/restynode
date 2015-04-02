@@ -123,4 +123,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   chef.validation_client_name = "ORGNAME-validator"
 
   config.vm.provision :shell, :path => "provision.sh"
+
+
+  # well, just curious about docker...
+  config.vm.provision "docker" do |d|
+    d.pull_images "ubuntu"
+    d.pull_images "node" #https://registry.hub.docker.com/_/node/
+  end
+
+
+
 end

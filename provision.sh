@@ -1,9 +1,15 @@
 #!/usr/bin/env bash
 
 apt-get update
+
 # Install build tools
 apt-get install -y make g++ git curl vim libcairo2-dev libav-tools portmap imagemagick subversion
 apt-get install -y python-software-properties python g++ make
+
+# Install Subversion 1.7
+add-apt-repository -y ppa:svn/ppa
+apt-get update
+apt-get install -y subversion
 
 # Install nodejs
 add-apt-repository -y ppa:chris-lea/node.js
@@ -19,10 +25,12 @@ apt-get install -y mongodb-10gen=2.4.4
 # Pin to the exact version above, so it's not auto upgraded by apt-get
 echo "mongodb-10gen hold" | dpkg --set-selections
 
+# Redis
 add-apt-repository -y ppa:chris-lea/redis-server
 apt-get update
 apt-get install -y redis-server
 
+# git
 echo "deb-src http://archive.ubuntu.com/ubuntu precise main" >> /etc/apt/sources.list
 sed -i 's/main$/main universe/' /etc/apt/sources.list
 apt-get update
