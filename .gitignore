@@ -1,2 +1,5 @@
-.vagrant
-temp
+*
+!Dockerfile
+!README.md
+!Vagrantfile
+!provision.sh
